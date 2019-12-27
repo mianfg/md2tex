@@ -15,6 +15,15 @@ Práctica Lex para Modelos de Computación (DGIIM UGR)
 
 1. (Ejemplo 37) El espacio en blanco es ignorado al parsear contenido _inline_ en cabeceras (`h1` a `h6`).
 
+El formato de las entradas será del siguiente tipo:
+
+| Aspecto | Output GFM | Output traductor |
+| --- | --- | --- |
+| Número de ejemplo GFM | Explicación del comportamiento especificado por GFM | Comportamiento de nuestro traductor (en caso de que no haga GFM) |
+| _Entrada_ | _Salida esperada GFM_ | _Salida traductor_ |
+
+---
+
 | Aspecto | Output GFM | Output traductor |
 | --- | --- | --- |
 | **Ejemplo 37** | Los espacios en blanco deben ser ignorados al parsear contenido _inline_ en cabeceras | El traductor guarda estos espacios en blanco. Esto es incluso más útil si queremos insertar espacios intencionadamente.
