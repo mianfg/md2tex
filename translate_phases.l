@@ -1,45 +1,94 @@
     /* ---- Sección de declaraciones ---- */
 
+    // Fases de traducción
+
 %s phase1
 %s phase2
 %s phase3
 %s phase4
 
-htmlverb        ("<".+">"(.*\n)*"</".+">"|"<!".+">")
+    // Expresiones regulares
+
+verbatim        ^"$$"[."\n"]*"$$"
+    // ------ VERIFY
 h1              ^" "{0,3}"# ".*$
+    // all good
 h2              ^" "{0,3}"## ".*$
+    // all good
 h3              ^" "{0,3}"### ".*$
+    // all good
 h4              ^" "{0,3}"#### ".*$
+    // all good
 h5              ^" "{0,3}"##### ".*$
+    // all good
 h6              ^" "{0,3}"###### ".*$
+    // all good
 h1setext        ^(.+\n)+" "{0,3}"="+$
+    // all good
 h2setext        ^(.+\n)+" "{0,3}"-"+$
-line1           ^" "{0,3}"*"" "*"*"" "*"*"" "*[" ""*"]*$
-line2           ^" "{0,3}"-"" "*"-"" "*"-"" "*[" ""-"]*$
-line3           ^" "{0,3}"_"" "*"_"" "*"_"" "*[" ""_"]*$
+    // all good
+
+    //line1           ^" "{0,3}"*"" "*"*"" "*"*"" "*[" ""*"]*$
+    //line2           ^" "{0,3}"-"" "*"-"" "*"-"" "*[" ""-"]*$
+    //line3           ^" "{0,3}"_"" "*"_"" "*"_"" "*[" ""_"]*$
+
 line            (^" "{0,3}"*"" "*"*"" "*"*"" "*[" ""*"]*$|^" "{0,3}"-"" "*"-"" "*"-"" "*[" ""-"]*$|^" "{0,3}"_"" "*"_"" "*"_"" "*[" ""_"]*$)
+    // all good
 indent          ^" "{4,}.*$
+    // ------ VERIFY
 tableh          " "*"| "(.*" | ").*" |"" "*"\n"
-tables          " "*"|"(" "*":"?"-"+":"?" "*"|")+" "*"\n"
+    // all good
+tables          " "*"|"(" "*":"?[" ""\-"]*"-"[" ""\-"]*":"?" "*"|")+" "*"\n"
+    // all good
+    // opcion2 " "*"|"(" "*":"?"-"+":"?" "*"|")+" "*"\n"
     //"|"(" "?":"?"-"+[" ""-"]*":"?" "?"|")+
 table           ^{tableh}{tables}{tableh}*
+    // all good
 bullist         "foo"
-numlist         "foo"
+    // ------ DO
+numlist         "fooo"
+    // ------ DO
 blockfirst      " "{0,3}">".*"\n"
+    // all good
 blocknext       .+\n
+    // all good
 blockquote      {blockfirst}{blocknext}*
+    // all good but VERIFY
+
+    // link
+    // image
+    // WIP modify strong and others to be like codeinline
+
+link            "\["[^"\[""\]""\n"]+"\]""\("[^"\(""\)""\n"]+"\)"
+    // all good  --- TRY LINK FIRST, BOLD THEN (SUBSTITUTE BOLD ETC IN [] OF LINK)
 
 html            ("<".+">".*(.*\n)*"</".+">"|"<!".*(.*\n)*">")
+    // all good
 codeblockind    ^("    ".+\n)+$
-codeblock       ^"`"{3,}(.*\n)*" "{0,3}"`"{3,}$
+    // ------ VERIFY
+codeblock1      ^"`"{3,}(.*\n)([^"`"{1,3}].*\n)*" "{0,3}"`"{3,}" "*$
+codeblock2      ^"~"{3,}(.*\n)([^"~"{1,3}].*\n)*" "{0,3}"~"{3,}" "*$
+    //codeblock       ((^"`"{3,}(.*\n)*" "{0,3}"`"{3,}$)|(^"~"{3,}(.*\n)*" "{0,3}"~"{3,}$))
+    // does not work
 codeinline      "`"[^"`""\n"]+"`"
-strong1         "**"([^" ""**"][^"**"]*[^" ""**"]|[^" ""**"][^" ""**"]?)"**"
-strong2         "__"([^" ""__"][^"__"]*[^" ""__"]|[^" ""__"][^" ""__"]?)"__"
+strong1         "**"[^"**""\n"]+"**"
+    //strong1         "**"([^" ""**"][^"**"]*[^" ""**"]|[^" ""**"][^" ""**"]?)"**"
+strong2         "__"[^"__""\n"]+"__"
+    //strong2         "__"([^" ""__"][^"__"]*[^" ""__"]|[^" ""__"][^" ""__"]?)"__"
 strong          ({strong1}|{strong2})
-emph1           "*"([^" ""*"][^"*"]*[^" ""*"]|[^" ""*"][^" ""*"]?)"*"
-emph2           "_"([^" ""_"][^"_"]*[^" ""_"]|[^" ""_"][^" ""_"]?)"_"
+emph1           "*"[^"*""\n"]+"*"
+    //emph1           "*"([^" ""*"][^"*"]*[^" ""*"]|[^" ""*"][^" ""*"]?)"*"
+emph2           "_"[^"_""\n"]+"_"
+    //emph2           "_"([^" ""_"][^"_"]*[^" ""_"]|[^" ""_"][^" ""_"]?)"_"
 emph            ({emph1}|{emph2})
-
+strongemph1     "***"[^"***""\n"]+"***"
+strongemph2     "___"[^"___""\n"]+"___"
+    //strongemph1     "***"([^" ""***"][^"***"]*[^" ""***"]|[^" ""***"][^" ""***"]?)"***"
+    //strongemph2     "___"([^" ""___"][^"___"]*[^" ""___"]|[^" ""___"][^" ""___"]?)"___"
+strongemph      ({strongemph1}|{strongemph2})
+strikethrough   "~~"[^"~~""\n"]+"~~"
+    //strikethrough   "~~"([^" ""~~"][^"~~"]*[^" ""~~"]|[^" ""~~"][^" ""~~"]?)"~~"            
+        // link can have bold inside
 %{
 #include "defines.h"
 /*
@@ -85,10 +134,15 @@ void replace(unsigned type, char *text, FILE *out);
 %%
 
     /* ---- Sección de reglas ---- */
+    /* WIP CUIDADO INDENTACION EN MIERDAS */
 
     //{verbatim}      { ECHO; }
 <phase2>{
-    {htmlverb}      { ECHO; }
+    {verbatim}      { ECHO; }
+    {html}          { ECHO; }
+    {codeblock1}    { ECHO; }
+    {codeblock2}    { ECHO; }
+    {codeblockind}  { ECHO; }
     {h1}            { replace(H1, yytext, yyout); }
     {h2}            { replace(H2, yytext, yyout); }
     {h3}            { replace(H3, yytext, yyout); }
@@ -106,13 +160,17 @@ void replace(unsigned type, char *text, FILE *out);
     .               { replace(DEFAULT, yytext, yyout); }
 }
 <phase3>{
+    {verbatim}      { ECHO; }
     {html}          { replace(HTML, yytext, yyout); }
+    {codeblock1}    { replace(CODEBLOCK, yytext, yyout); }
+    {codeblock2}    { replace(CODEBLOCK, yytext, yyout); }
     {codeblockind}  { replace(CODEBLOCKIND, yytext, yyout); }
-    {codeblock}     { replace(CODEBLOCK, yytext, yyout); }
     {codeinline}    { replace(CODEINLINE, yytext, yyout); }
     {strong}        { replace(STRONG, yytext, yyout); }
     {emph}          { replace(EMPH, yytext, yyout); }
-    {indent}        { replace(INDENT, yytext, yyout); }
+    {strongemph}    { replace(STRONGEMPH, yytext, yyout); }
+    {strikethrough} { replace(STRIKETHROUGH, yytext, yyout); }
+    {link}          { replace(LINK, yytext, yyout); }
     .               { replace(DEFAULT, yytext, yyout); }
 }
 
@@ -158,7 +216,7 @@ int translate(FILE* stream_read, unsigned phase) {
     return 0;
 }
 
-char* removeFirstLast(char* str, int first, int last) {
+char* removeFirstLast(char *str, int first, int last) {
     for ( int i = 0; i < first; i++ )
         str++;
     
@@ -167,7 +225,7 @@ char* removeFirstLast(char* str, int first, int last) {
     return str;
 }
 
-void replace(unsigned type, char* text, FILE* out) {
+void replace(unsigned type, char *text, FILE *out) {
     char *str;
     //WIPprintf("Lex executed\n");
     switch(type) {
@@ -229,6 +287,9 @@ void replace(unsigned type, char* text, FILE* out) {
         case BLOCKQUOTE:
             fprintf(out, "{{blockquote}}%s{{/blockquote}}", text);
             break;
+        case LINK:
+            fprintf(out, "{{link}}%s{{/link}}", text);
+            break;
         case HTML:
             fprintf(out, "{{html}}%s{{/html}}", text);
             break;
@@ -236,7 +297,7 @@ void replace(unsigned type, char* text, FILE* out) {
             fprintf(out, "{{codeind}}%s{{/codeind}}", text);
             break;
         case CODEBLOCK:
-            fprintf(out, "{{codeblock}}%s{{/codeblock}}", text);
+            fprintf(out, "{{codeblock}}%s{{/codeblock}}", removeFirstLast(text, 3, 3));
             break;
         case CODEINLINE:
             fprintf(out, "{{code}}%s{{/code}}", removeFirstLast(text, 1, 1));
@@ -246,6 +307,12 @@ void replace(unsigned type, char* text, FILE* out) {
             break;
         case EMPH:
             fprintf(out, "{{emph}}%s{{/emph}}", removeFirstLast(text, 1, 1));
+            break;
+        case STRONGEMPH:
+            fprintf(out, "{{strongemph}}%s{{/strongemph}}", removeFirstLast(text, 3, 3));
+            break;
+        case STRIKETHROUGH:
+            fprintf(out, "{{strikethrough}}%s{{/strikethrough}}", removeFirstLast(text, 2, 2));
             break;
         default:
             fprintf(out, "%s", text);

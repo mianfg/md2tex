@@ -54,3 +54,33 @@ No lo hace
 
 112
 IMPLEMENTAR
+
+
+116 WTF
+
+121-125 no
+
+
+131 no
+
+147 revisar e implementar
+150-151 CDATA
+
+157
+159,160 no
+
+
+link reference definitions not implemented
+
+Párrafos como en LaTeX
+
+
+203
+
+369
+left-flanking delimiter run
+intraword ** no __
+399
+401
+
+resumir en *** ___ para ambos
