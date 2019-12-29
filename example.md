@@ -7,4 +7,32 @@ Exactamente
 ###    incluso así funciona
 
    *         ** * *   *
+
+    aaa
+    asd
+    a
+    
+
+Feras
+asd
+o
+===
+<table>
+  <tr>
+    <td>
+           **hi**
+    </td>
+  </tr>
+</table>
+
+okay.
+<h2>**a**
+</h2>
+
+
+```
+    asda
+b
+```
+
 #
