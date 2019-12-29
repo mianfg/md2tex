@@ -100,7 +100,7 @@ Cada flecha significa _fase siguiente_, comenzando por la primera fase.
 
 ### GitHub-flavored Markdown
 
-Debido a que no hay un estándar para renderizar texto Markdown, para este traductor se ha tenido en cuenta la especificación [GitHub-flavored Markdown](#github-flavored-markdown). Ésta consiste en más de seiscientas reglas y ejemplos.
+Debido a que no hay un estándar para renderizar texto Markdown, para este traductor se ha tenido en cuenta la especificación [GitHub-flavored Markdown](https://github.github.com/gfm/). Ésta consiste en más de seiscientas reglas y ejemplos.
 
 Este traductor es capaz de traducir la mayor parte de estas reglas, excepto algunas de ellas por dos motivos:
 
