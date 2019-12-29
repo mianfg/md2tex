@@ -458,11 +458,12 @@ void replace(unsigned type, char *text, FILE *out) {
             fprintf(out, "%s\n", BULLISTFOOTER);
             break;
         case NUMLIST:
-            /*
-                NOTE: this function uses atoi, not recommended for use in
-                production. However, the behavior of this function is known at
-                all times, hence atoi will not cause any failure.
-            */
+            /**
+             * @note
+             * This function uses atoi, not recommended for use in production.
+             * However, the behavior of this function is known at all times,
+             * hence atoi will not cause any failure.
+             */
             ;
             number[0] = '\0';
             int readnumber = -1;
