@@ -41,7 +41,7 @@ $ ./md2tex example.md --preserve
 
 **`md2tex`** ofrece las siguientes funcionalidades:
 
-* **Traducción.** Es capaz de traducir texto en Markdown de acuerdo a la especificación GSM (ver [_GitHub-flavored Markdown_](#) más adelante) a texto en LaTeX. Soporta las siguientes categorías de Markdown (y una extra :wink:):
+* **Traducción.** Es capaz de traducir texto en Markdown de acuerdo a la especificación GSM (ver [_GitHub-flavored Markdown_](#github-flavored-markdown) más adelante) a texto en LaTeX. Soporta las siguientes categorías de Markdown (y una extra :wink:):
   * **HTML** (`HTML`). El traductor dejará los comandos HTML intactos.
   * **Cabeceras (h1-h6)** (`HEADER`). Incluyendo cabeceras _setext_.
   * **Línea larga** (`LINE`).
@@ -69,7 +69,7 @@ $ ./md2tex example.md --preserve
 | [`defines.h`](./defines.h) | `#define` necesarios para el _lexer_, hacen el código más claro y estético |
 | [`example.md`](./example.md) | Ejemplo que usa casi todas las etiquetas Markdown |
 | [`example_md2tex.tex`](./example_md2tex.tex) | Output de ejecutar `md2tex` sobre el ejemplo anterior |
-| [`latexcommands.h`](./latexcommands.h) | Permite la customización de los comandos LaTeX (ver [_Características del traductor_](#)) |
+| [`latexcommands.h`](./latexcommands.h) | Permite la customización de los comandos LaTeX (ver [_Características del traductor_](#características-del-traductor)) |
 | [`lex.yy.c`](./lex.yy.c) | Es el fichero generado al hacer `lex md2tex.l`, lo inserto aquí en caso de que este comando no funcione correctamente |
 | [`makefile`](./makefile) | Facilita la compilación |
 | [`md2tex_main.c`](./md2tex_main.c) | Contiene el `main`, llama a `m2tex.l` (traducido a C) y genera archivos para cada fase de la traducción |
@@ -84,7 +84,7 @@ Debido a las dependencias entre los distintos comandos de Markdown, y a la posib
 3. **Estilización.** Sustituye los comandos estilísticos.
 4. **_Escaping_ II.** Sustituye las cadenas escapadas por los caracteres originales.
 
-Debido a la forma y la preferencia de `lex` en el _parsing_ de los caracteres, se recurre en algunos comandos a la estrategia de parsear con `ECHO`, es decir, de "leer" esa secuencia de caracteres y no hacer nada. Como `lex` ejecuta la regla sobre la cadena más larga, si se encuentran otros comandos dentro de la cadena parseada, serán ignorados. Podemos usar esto en nuestro beneficio, aunque también nos impone [algunas limitaciones](#).
+Debido a la forma y la preferencia de `lex` en el _parsing_ de los caracteres, se recurre en algunos comandos a la estrategia de parsear con `ECHO`, es decir, de "leer" esa secuencia de caracteres y no hacer nada. Como `lex` ejecuta la regla sobre la cadena más larga, si se encuentran otros comandos dentro de la cadena parseada, serán ignorados. Podemos usar esto en nuestro beneficio, aunque también nos impone [algunas limitaciones](#limitaciones-técnicas-y-posibles-mejoras).
 
 A continuación, un grafo explicando qué comandos se _parsean_ en cada fase de traducción. Considere [las etiquetas mencionadas anteriormente](#), y las siguientes estrategias:
 
@@ -100,7 +100,7 @@ Cada flecha significa _fase siguiente_, comenzando por la primera fase.
 
 ### GitHub-flavored Markdown
 
-Debido a que no hay un estándar para renderizar texto Markdown, para este traductor se ha tenido en cuenta la especificación [GitHub-flavored Markdown](). Ésta consiste en más de seiscientas reglas y ejemplos.
+Debido a que no hay un estándar para renderizar texto Markdown, para este traductor se ha tenido en cuenta la especificación [GitHub-flavored Markdown](#github-flavored-markdown). Ésta consiste en más de seiscientas reglas y ejemplos.
 
 Este traductor es capaz de traducir la mayor parte de estas reglas, excepto algunas de ellas por dos motivos:
 
