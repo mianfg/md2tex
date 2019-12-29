@@ -1,5 +1,5 @@
 /**
- * @file md2tex.c
+ * @file md2tex_main.c
  * @author Miguel Ángel Fernández Gutiérrez (https://mianfg.bloomgogo.com/)
  * @date 29 Dec 2019
  * @brief Main script for md2tex

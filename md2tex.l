@@ -190,8 +190,22 @@ int yywrap() {
     return 1;
 }
 
+void header_message(FILE* stream_write, char* output_filename) {
+    fprintf(stream_write, "%% %s\n", output_filename);
+    fprintf(stream_write, "%% ---------------------------------------------------\n");
+    fprintf(stream_write, "%% This file has been generated using md2tex\n");
+    fprintf(stream_write, "%%     https://github.com/mianfg/md2tex\n");
+    fprintf(stream_write, "%%\n");
+    fprintf(stream_write, "%% Author: Miguel Ángel Fernández Gutiérrez (@mianfg)\n");
+    fprintf(stream_write, "%% ---------------------------------------------------\n\n\n");
+}
+
 int translate(FILE* stream_read, char* output_name, unsigned phase) {
     FILE* stream_write;
+
+    stream_write=fopen(output_name,"w");
+    yyin = stream_read;
+    yyout = stream_write;
 
     // retrieves phase of translation
     switch (phase) {
@@ -206,14 +220,11 @@ int translate(FILE* stream_read, char* output_name, unsigned phase) {
             break;
         case PHASE4:
             BEGIN(phase4);
+            header_message(stream_write, output_name);
             break;
         default:
             exit(-1);
     }
-
-    stream_write=fopen(output_name,"w");
-    yyin = stream_read;
-    yyout = stream_write;
 
     // executes lexer
     yylex();

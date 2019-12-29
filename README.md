@@ -4,7 +4,7 @@
 
 <h1 align="center"><p align="center">md2tex</h1></h1>
 
-> Creado por **Miguel Ángel Fernández Gutiérrez** · <https://mianfg.bloomgogo.com/> como práctica para la asignatura **Modelos de Computación** (DECSAI)  
+> Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.bloomgogo.com/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
 > Doble Grado en Ingeniería Informática y Matemáticas, UGR. Curso 2019/2020
 
 ## Introducción
@@ -14,6 +14,28 @@
 Por otra parte, **LaTeX** es otro sistema de composición de textos, mucho más complejo y más lento de usar. Insertar cosas tan fundamentales como negritas, énfasis, listas, etc. puede resultar tedioso en algunas ocasiones.
 
 **`md2tex`** es la solución para cuando queremos escribir rápidamente texto estilizado en LaTeX, pues convierte texto en Markdown a texto en LaTeX.
+
+## Uso
+
+Haga uso del `makefile` proporcionado, haciendo:
+
+~~~
+$ make
+~~~
+
+Obtendrá el archivo compilado `md2tex`, que puede ejecutar sobre el archivo Markdown de prueba `example.md`:
+
+~~~
+$ ./md2tex example.md
+~~~
+
+Compruebe y compare los archivos `example.md` y el recién generado `example_md2tex.tex`.
+
+Puede observar las fases de la traducción haciendo:
+
+~~~
+$ ./md2tex example.md --preserve
+~~~
 
 ## Características del traductor
 
@@ -44,11 +66,14 @@ Por otra parte, **LaTeX** es otro sistema de composición de textos, mucho más 
 
 | Nombre de fichero | Descripción |
 | --- | --- |
-| `defines.h` | `#define` necesarios para el _lexer_, hacen el código más claro y estético |
-| `latexcommands.h` | Permite la customización de los comandos LaTeX (ver [_Características del traductor_](#)) |
-| `lex.yy.c` | Es el fichero generado al hacer `lex md2tex.l`, lo inserto aquí en caso de que este comando no funcione correctamente |
-| `md2tex.c` | Contiene el `main`, llama a `m2tex.l` (traducido a C) y genera archivos para cada fase de la traducción |
-| `md2tex.l` | El fichero de `lex`, es el que contiene el código relativo a la traducción de cada fase |
+| [`defines.h`](./defines.h) | `#define` necesarios para el _lexer_, hacen el código más claro y estético |
+| [`example.md`](./example.md) | Ejemplo que usa casi todas las etiquetas Markdown |
+| [`example_md2tex.tex`](./example_md2tex.tex) | Output de ejecutar `md2tex` sobre el ejemplo anterior |
+| [`latexcommands.h`](./latexcommands.h) | Permite la customización de los comandos LaTeX (ver [_Características del traductor_](#)) |
+| [`lex.yy.c`](./lex.yy.c) | Es el fichero generado al hacer `lex md2tex.l`, lo inserto aquí en caso de que este comando no funcione correctamente |
+| [`makefile`](./makefile) | Facilita la compilación |
+| [`md2tex_main.c`](./md2tex_main.c) | Contiene el `main`, llama a `m2tex.l` (traducido a C) y genera archivos para cada fase de la traducción |
+| [`md2tex.l`](./md2tex.l) | El fichero de `lex`, es el que contiene el código relativo a la traducción de cada fase |
 
 ## Sobre la traducción
 
@@ -63,7 +88,7 @@ Debido a la forma y la preferencia de `lex` en el _parsing_ de los caracteres, s
 
 A continuación, un grafo explicando qué comandos se _parsean_ en cada fase de traducción. Considere [las etiquetas mencionadas anteriormente](#), y las siguientes estrategias:
 
-* **ignore:** parsear e ignorar.
+* **ignore:** no parsear.
 * **ECHO:** parsear y `ECHO`.
 * **action:** se modifica el texto de alguna forma.
 
@@ -75,10 +100,19 @@ Cada flecha significa _fase siguiente_, comenzando por la primera fase.
 
 ### GitHub-flavored Markdown
 
+Debido a que no hay un estándar para renderizar texto Markdown, para este traductor se ha tenido en cuenta la especificación [GitHub-flavored Markdown](). Ésta consiste en más de seiscientas reglas y ejemplos.
 
+Este traductor es capaz de traducir la mayor parte de estas reglas, excepto algunas de ellas por dos motivos:
 
-### Limitaciones técnicas
+* Son reglas "inútiles" (la mayoría de los _parsers_ no la tienen implementada).
+* No son reglas interpretables por expresiones regulares (y, por ello, por lenguajes regulares).
 
+### Limitaciones técnicas y posibles mejoras
 
+Debido a limitaciones de `lex` (y a que sería muy complicado implementarlo en este lenguaje), las siguientes características no funcionan de forma total en el traductor:
 
-### Posibles mejoras
+* Anidamiento de estilos: si queremos colocar una cursiva en una negrita, por ejemplo. Puede evitarse concatenando los estilos.
+* Múltiples niveles en listas: el traductor sólo es capaz de interpretar listas un nivel de profundidad.
+* Estilos en textos de enlaces e imágenes: podría implementarse con una fase extra en la traducción. Lo he considerado innecesario.
+
+Estas características podrían implementarse en futuras versiones de la aplicación.

@@ -1,0 +1,376 @@
+% example_md2tex.tex
+% ---------------------------------------------------
+% This file has been generated using md2tex
+%     https://github.com/mianfg/md2tex
+%
+% Author: Miguel Ángel Fernández Gutiérrez (@mianfg)
+% ---------------------------------------------------
+
+
+\part{Manual de Markdown}
+
+\begin{displayquote}
+ Miguel Ángel Fernández Gutiérrez (\href{https://mianfg.bloomgogo.com}{@mianfg})
+\end{displayquote}
+
+\chapter{Introducción}
+
+Markdown es uno de los lenguajes de marcado más importantes, por su sencillez, rapidez y versatilidad. En este manual te explico cómo usar Markdown (y esto es \emph{todo lo que hay} :wink:).
+
+\chapter{Sintaxis de Markdown}
+
+La mejor manera de hacerse una idea de la sintaxis de Markdown es simplemente echar un vistazo a un escrito formateado como tal.
+
+\begin{lstlisting}[language=]
+## Título
+### Subtítulo
+Este es un ejemplo de texto que da entrada a una lista genérica de elementos:
+
+- Elemento 1
+- Elemento 2
+- Elemento 3
+
+Este es un ejemplo de texto que da entrada a una lista numerada:
+
+1. Elemento 1
+2. Elemento 2
+3. Elemento 3
+
+Al texto en Markdown puedes añadirle formato como **negrita** o *cursiva* de una manera muy sencilla.
+\end{lstlisting}
+
+Como ves, se cumple perfectamente uno de los objetivos para los que Markdown fue diseñado, y es hacer las publicaciones lo más legibles posible.
+
+Otro de los objetivos de Markdown, es que puedas publicar los documentos “como están”. No importa si el resultado final que necesitas es HTML, un PDF o texto en formato enriquecido (RTF); ya que siempre podrás obtener estos formatos a través de un conversor, o a través de aplicaciones compatibles con Markdown.
+Índice de sintaxis Markdown
+
+\chapter{Índice}
+
+En el lenguaje Markdown encontrarás tres tipos de elementos básicos que a su vez engloban el resto de la sintaxis. Considera esto una \emph{cheat sheet} con la que guiarte.
+
+\begin{itemize}
+\item \href{#elementos\itemde\itembloque}{Elementos de bloque}
+\item \href{#párrafos\itemy\itemsaltos\itemde\itemlínea}{Párrafos y saltos de línea}
+\item \href{#encabezados}{Encabezados}
+\item \href{#citas}{Citas}
+\item \href{#listas}{Listas}
+\item \href{#códigos\itemde\itembloque}{Códigos de bloque}
+\item \href{#reglas\itemhorizontales}{Reglas horizontales}
+\item \href{#elementos\itemde\itemlínea}{Elementos de línea}
+\item \href{#Énfasis\itemnegritas\itemy\itemcursivas}{Énfasis}
+\item \href{#links\itemo\itemenlaces}{Links o enlaces}
+\item \href{#código}{Código}
+\item \href{#imágenes}{Imágenes}
+\item \href{#elementos\itemvarios}{Elementos varios}
+\item \href{#tablas}{Tablas}
+\item \href{#links\itemautomáticos\item1}{Links automáticos}
+\item \href{#omitir\itemmarkdown}{Omitir Markdown}
+\item \href{#cositas\itemde\itemgithub}{Cositas de GitHub}
+\end{itemize}
+
+\chapter{Elementos de bloque}
+
+\section{Párrafos y saltos de línea}
+
+Para generar un nuevo párrafo en Markdown simplemente separa el texto mediante una línea en blanco \textbf{(pulsando dos veces intro)}.
+
+Al igual que sucede con HTML, \textbf{Markdown no soporta dobles líneas en blanco}, así que si intentas generarlas estas se convertirán en una sola al procesarse.
+
+Para realizar un salto de línea y empezar una frase en una línea siguiente dentro del mismo párrafo, tendrás que pulsar dos veces la barra espaciadora antes de pulsar una vez intro.
+
+Por ejemplo si quisieses escribir un poema Haiku quedaría tal que así:
+
+\emph{“Andando con sus patitas mojadas,}  
+\emph{el gorrión}  
+\emph{por la terraza de madera”}  
+
+Donde cada verso tiene dos espacios en blanco al final.
+
+\section{Encabezados}
+
+Las \lstinline{#} \textbf{almohadillas} son uno de los métodos utilizados en Markdown para crear encabezados. Debes usarlos añadiendo \textbf{uno por cada nivel}.
+
+Es decir,
+
+\begin{lstlisting}[language= markdown]
+# Encabezado 1
+## Encabezado 2
+### Encabezado 3
+#### Encabezado 4
+##### Encabezado 5
+###### Encabezado 6
+\end{lstlisting}
+
+Se corresponde con
+
+\part{Encabezado 1}
+\chapter{Encabezado 2}
+\section{Encabezado 3}
+\subsection{Encabezado 4}
+\subsubsection{Encabezado 5}
+\paragraph{Encabezado 6}
+
+También puedes cerrar los encabezados con el mismo número de almohadillas, por ejemplo escribiendo \lstinline{### Encabezado 3 ###}. Pero la única finalidad de esto es un \textbf{motivo estético}.
+
+Existe otra manera de generar encabezados, aunque este método está \textbf{limitado a dos niveles}.
+
+Consiste en subrayar los encabezados con el símbolo \lstinline{=} (para el encabezado 1), o con guiones \lstinline{-} para el encabezado 2.
+
+Es decir,
+
+\begin{lstlisting}[language= md]
+Esto sería un encabezado 1
+===
+Esto sería un encabezado 2
+--
+\end{lstlisting}
+
+No existe un número concreto de \lstinline{=} o \lstinline{-} que necesites escribir para que esto funcione, ¡incluso bastaría con uno!
+
+\section{Citas}
+
+Las citas se generar utilizando el carácter mayor que > al comienzo del bloque de texto.
+
+\begin{lstlisting}[language= md]
+> Un país, una civilización se puede juzgar por la forma en que trata a sus animales.  — Mahatma Gandhi
+\end{lstlisting}
+
+\begin{displayquote}
+ Un país, una civilización se puede juzgar por la forma en que trata a sus animales.  — Mahatma Gandhi
+\end{displayquote}
+
+Si la cita en cuestión se compone de varios párrafos, deberás añadir el mismo símbolo > al comienzo de cada uno de ellos.
+
+\begin{lstlisting}[language= md]
+> Creo que los animales ven en el hombre un ser igual a ellos que ha perdido de forma extraordinariamente peligrosa el sano intelecto animal.
+> Es decir, que ven en él al animal irracional, al animal que ríe, al animal que llora, al animal infeliz. — Friedrich Nietzsche
+\end{lstlisting}
+
+\begin{displayquote}
+ Creo que los animales ven en el hombre un ser igual a ellos que ha perdido de forma extraordinariamente peligrosa el sano intelecto animal.
+ Es decir, que ven en él al animal irracional, al animal que ríe, al animal que llora, al animal infeliz. — Friedrich Nietzsche
+\end{displayquote}
+
+Recuerda separar los \textbf{saltos de línea} con \lstinline{>}, o \lstinline{>>} si te encuentras dentro de la cita anidada; para crear párrafos dentro del mismo bloque de cita.
+
+\section{Listas}
+
+A diferencia de lo que ocurre en HTML, generar listas en Markdown es tremendamente sencillo. Puedes encontrarte con dos tipos.
+
+\subsection{Listas desordenadas}
+
+Para crear \textbf{listas desordenadas} utiliza \lstinline{*} \textbf{asteriscos}, \lstinline{-} \textbf{guiones}, o \lstinline{+} \textbf{símbolos de suma}.
+
+\begin{lstlisting}[language= md]
+- Elemento de lista 1
+- Elemento de lista 2
+* Elemento de lista 3
+* Elemento de lista 4
++ Elemento de lista 5
++ Elemento de lista 6
+\end{lstlisting}
+
+Da igual qué elemento escojas, incluso puedes intercambiarlos. Todos se verán igual al procesarse.
+
+\begin{itemize}
+\item Elemento de lista 1
+\item Elemento de lista 2
+\item Elemento de lista 3
+\item Elemento de lista 4
+\item Elemento de lista 5
+\item Elemento de lista 6
+\end{itemize}
+
+\subsection{Listas ordenadas}
+
+Para crear listas ordenadas debes utilizar la sintaxis de tipo: \emph{“número.”} \lstinline{1.}.
+
+\begin{lstlisting}[language= md]
+2. Elemento de lista 2
+3.  Elemento de lista 3
+6. Elemento de lista desordenado
+5. Elemento de lista 5
+\end{lstlisting}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Elemento de lista 2
+\item  Elemento de lista 3
+\item[6.] Elemento de lista desordenado
+\item Elemento de lista 5
+\end{enumerate}
+
+\chapter{Códigos de bloque}
+
+Si quieres crear un bloque entero que contenga código. Lo único que tienes que hacer es encerrar dicho párrafo entre dos líneas formadas por tres \lstinline{~} \textbf{virgulillas}.
+
+De esta forma, obtendrás el siguiente resultado:
+
+\begin{lstlisting}[language=]
+Creando códigos de bloque.
+Puedes añadir tantas líneas y párrafos como quieras.  
+\end{lstlisting}
+
+Colocando a la derecha del \lstinline{~~~} el nombre del lenguaje a utilizar, se formateará el texto de acuerdo al lenguaje.
+
+\section{Reglas horizontales}
+
+Las \lstinline{reglas horizontales} se utilizan para separar secciones de una manera visual. Las estás viendo constantemente en este artículo ya que las estoy utilizando para separar los diferentes elementos de sintaxis de Markdown.
+
+Para crearlas, en una línea en blanco deberás incluir tres de los siguientes elementos: asteriscos, guiones, o guiones bajos.
+
+Es decir
+
+\begin{lstlisting}[language= md]
+***
+---
+___
+\end{lstlisting}
+
+\subsection{***}
+\par\noindent\rule{\textwidth}{0.4pt}
+
+También puedes separarlos mediante un espacio en blanco por pura estética.
+
+\begin{lstlisting}[language= md]
+* * *
+- - -
+_ _ _
+\end{lstlisting}
+
+\chapter{Elementos de línea}
+\section{Énfasis (negritas y cursivas)}
+
+Markdown utiliza \lstinline{*} \textbf{asteriscos} o \lstinline{_} \textbf{guiones bajos} para enfatizar.
+
+Simplemente tendrás que envolver palabras o textos en éstos símbolos para conseguir cursivas o negritas.
+
+\begin{table}[]
+\begin{tabular}{ll}
+ Markdown & Resultado \\              
+ \lstinline{*cursiva*} & \emph{cursiva} \\
+ \lstinline{_cursiva_} & \emph{cursiva} \\
+ \lstinline{**negrita**} & \textbf{negrita} \\
+ \lstinline{__negrita__} & \textbf{negrita} \\
+\end{tabular}
+\end{table}
+
+Por supuesto si quieres utilizar los dos tipos de énfasis no tienes más que combinar la sintaxis, envolviendo la palabra entre tres asteriscos o tres guiones bajos.
+
+\begin{table}[]
+\begin{tabular}{ll}
+ Markdown & Resultado \\              
+ \lstinline{***cursiva y negrita***} & \textbf{\emph{{cursiva y negrita}} \\
+ \lstinline{___cursiva y negrita___} & \textbf{\emph{{cursiva y negrita}} \\
+\end{tabular}
+\end{table}
+
+\section{Links o enlaces}
+
+Añadir enlaces a una publicación, más que común, hoy en día es algo casi obligatorio. Con Markdown tendrás varias formas de hacerlo.
+
+\subsection{Links o enlaces en línea}
+
+Son los enlaces de toda la vida. Como su nombre indica, se encuentran en línea con el texto.
+
+Se crean escribiendo la palabra o texto enlazada entre \lstinline{[]} \textbf{corchetes}, y el link en cuestión entre \lstinline{()} \textbf{paréntesis}.
+
+\begin{table}[]
+\begin{tabular}{ll}
+ Markdown & Resultado \\              
+ \lstinline{[enlace](http://example.com/)} & \href{http://example.com/}{enlace} \\
+\end{tabular}
+\end{table}
+
+\chapter{Código}
+
+En según que tipo de publicaciones (sobre todo las de carácter técnico), necesitarás añadir pequeñas secciones donde mostrar código de otro lenguaje, atajos de teclado, o demás contenido que no debería ser tratado como tal.
+
+Para ello tienes disponible dos alternativas.
+
+\section{Código puro \lstinline{<code>}}
+
+La forma más sencilla de escribir código en Markdown es envolver el texto entre dos \textbf{acentos graves} \\ESCAPE\\lstinline{\\. Esto se corresponde con la etiqueta HTML }<code>`.
+
+\begin{lstlisting}[language= md]
+`Esto es una línea de código`
+\end{lstlisting}
+
+Se verá como \lstinline{Esto es una línea de código}.
+
+Como ves, es muy útil para introducir código dentro de la misma línea o párrafo, algo que no permite el método siguiente.
+
+\section{Imágenes}
+
+Insertar una imagen con Markdown se realiza de una manera prácticamente idéntica a insertar links.
+
+Solo que en este caso, deberás añadir un símbolo de \lstinline{!} \textbf{exclamación} al principio y el enlace no será otro que la ubicación de la imagen.
+
+\begin{lstlisting}[language=md]
+![Texto alternativo](/ruta/a/la/imagen.jpg)
+\end{lstlisting}
+
+El texto alternativo es lo que se mostraría si la carga de la imagen fallase.
+
+También podrás añadir un título alternativo entrecomillándolo al final de la ruta. Esto sería el título mostrado al dejar el cursor del ratón sobre la imagen.
+
+\begin{lstlisting}[language=]
+![Texto alternativo](/ruta/a/la/imagen.jpg "Título alternativo")
+\end{lstlisting}
+
+\chapter{Elementos varios}
+
+\section{Tablas}
+
+Añadir una tabla es muy sencillo: simplemente sigue el siguiente formato.
+
+\begin{lstlisting}[language= md]
+| Nombre | Descripción |
+| ------ | ----------- |
+| Hoola  | Helouu      |
+| Adioss | Byee        |
+\end{lstlisting}
+
+\begin{table}[]
+\begin{tabular}{ll}
+ Nombre & Descripción \\                         
+ Hoola  & Helouu      \\
+ Adioss & Byee        \\
+\end{tabular}
+\end{table}
+
+Puedes añadir el número de \lstinline{-} que quieras (debe haber al menos uno), pero sólo después de la primera fila: si añades más, aparecerá \emph{per se}, y si no lo añades tras la primera fila, no se generará la tabla.
+
+\section{Omitir Markdown}
+
+Si has llegado hasta aquí es probable que te estés preguntando cómo he conseguido escribir ciertos símbolos como \lstinline{*} asteriscos o \lstinline{_} guiones bajos, sin que Markdown los interprete para convertirlos en negritas, cursivas…
+
+Esto es muy sencillo, ya que en este lenguaje existe un elemento estrella para especificar que todo lo que escribas a continuación, no se interprete como Markdown.
+
+Se trata de la \textbf{barra invertida} \lstinline{}.
+
+Escribiéndola justo delante de cualquiera de los elementos que verás a continuación, los mismos no tendrán efecto a la hora de convertirse en negritas, cursivas, links…
+
+\begin{table}[]
+\begin{tabular}{lll}
+ Símbolo & Descripción \\              
+ \\ESCAPE\&\\ & barra invertida \\
+ ` & acento invertido \\
+ * & asterisco \\
+ _ & guión bajo \\
+ {} & llaves \\
+ [] & corchetes \\
+ () & paréntesis \\
+ # & almohadilla \\
+ + & símbolo de suma \\
+ - & guión \\
+ . & punto \\
+ ! & exclamación \\
+\end{tabular}
+\end{table}
+
+\chapter{Cositas de GitHub}
+
+Los Markdown en GitHub (que deben tener extensión \lstinline{.md}) tienen una serie de funcionalidades añadidas que podrás encontrar \href{https://guides.github.com/features/mastering-markdown/}{aquí}.
+
+> Basado en el texto de <https://markdown.es/>
