@@ -168,7 +168,7 @@ void replace(unsigned type, char *text, FILE *out);
     {restoreescapebs}   { fprintf(yyout, "\\"); }
     {restoreescapebt}   { fprintf(yyout, "`"); }
     {restoreescapeas}   { fprintf(yyout, "*"); }
-    {restoreescapeun}   { fprintf(yyout, "_"); }
+    {restoreescapeun}   { fprintf(yyout, "\\_"); }
     {restoreescapecu1}  { fprintf(yyout, "{"); }
     {restoreescapecu2}  { fprintf(yyout, "}"); }
     {restoreescapesb1}  { fprintf(yyout, "["); }
@@ -180,6 +180,7 @@ void replace(unsigned type, char *text, FILE *out);
     {restoreescapemi}   { fprintf(yyout, "-"); }
     {restoreescapedo}   { fprintf(yyout, "."); }
     {restoreescapeex}   { fprintf(yyout, "!"); }
+    "_"                 { fprintf(yyout, "\\_"); }
 }
 
 %%

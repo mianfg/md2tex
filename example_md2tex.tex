@@ -224,7 +224,7 @@ Es decir
 \begin{lstlisting}[language= md]
 ***
 ---
-___
+\_\_\_
 \end{lstlisting}
 
 \subsection{***}
@@ -235,13 +235,13 @@ También puedes separarlos mediante un espacio en blanco por pura estética.
 \begin{lstlisting}[language= md]
 * * *
 - - -
-_ _ _
+\_ \_ \_
 \end{lstlisting}
 
 \chapter{Elementos de línea}
 \section{Énfasis (negritas y cursivas)}
 
-Markdown utiliza \lstinline{*} \textbf{asteriscos} o \lstinline{_} \textbf{guiones bajos} para enfatizar.
+Markdown utiliza \lstinline{*} \textbf{asteriscos} o \lstinline{\_} \textbf{guiones bajos} para enfatizar.
 
 Simplemente tendrás que envolver palabras o textos en éstos símbolos para conseguir cursivas o negritas.
 
@@ -249,9 +249,9 @@ Simplemente tendrás que envolver palabras o textos en éstos símbolos para con
 \begin{tabular}{ll}
  Markdown & Resultado \\              
  \lstinline{*cursiva*} & \emph{cursiva} \\
- \lstinline{_cursiva_} & \emph{cursiva} \\
+ \lstinline{\_cursiva\_} & \emph{cursiva} \\
  \lstinline{**negrita**} & \textbf{negrita} \\
- \lstinline{__negrita__} & \textbf{negrita} \\
+ \lstinline{\_\_negrita\_\_} & \textbf{negrita} \\
 \end{tabular}
 \end{table}
 
@@ -261,7 +261,7 @@ Por supuesto si quieres utilizar los dos tipos de énfasis no tienes más que co
 \begin{tabular}{ll}
  Markdown & Resultado \\              
  \lstinline{***cursiva y negrita***} & \textbf{\emph{{cursiva y negrita}} \\
- \lstinline{___cursiva y negrita___} & \textbf{\emph{{cursiva y negrita}} \\
+ \lstinline{\_\_\_cursiva y negrita\_\_\_} & \textbf{\emph{{cursiva y negrita}} \\
 \end{tabular}
 \end{table}
 
@@ -343,7 +343,7 @@ Puedes añadir el número de \lstinline{-} que quieras (debe haber al menos uno)
 
 \section{Omitir Markdown}
 
-Si has llegado hasta aquí es probable que te estés preguntando cómo he conseguido escribir ciertos símbolos como \lstinline{*} asteriscos o \lstinline{_} guiones bajos, sin que Markdown los interprete para convertirlos en negritas, cursivas…
+Si has llegado hasta aquí es probable que te estés preguntando cómo he conseguido escribir ciertos símbolos como \lstinline{*} asteriscos o \lstinline{\_} guiones bajos, sin que Markdown los interprete para convertirlos en negritas, cursivas…
 
 Esto es muy sencillo, ya que en este lenguaje existe un elemento estrella para especificar que todo lo que escribas a continuación, no se interprete como Markdown.
 
@@ -357,7 +357,7 @@ Escribiéndola justo delante de cualquiera de los elementos que verás a continu
  \\ESCAPE\&\\ & barra invertida \\
  ` & acento invertido \\
  * & asterisco \\
- _ & guión bajo \\
+ \_ & guión bajo \\
  {} & llaves \\
  [] & corchetes \\
  () & paréntesis \\
