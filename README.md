@@ -4,7 +4,7 @@
 
 <h1 align="center"><p align="center">md2tex</h1></h1>
 
-> Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.bloomgogo.com/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
+> Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
 > Doble Grado en Ingeniería Informática y Matemáticas, UGR. Curso 2019/2020
 
 ## Introducción
