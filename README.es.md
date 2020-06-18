@@ -7,8 +7,6 @@
 > Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
 > Doble Grado en Ingeniería Informática y Matemáticas, UGR. Curso 2019/2020
 
-## Introducción
-
 **Markdown** es uno de los lenguajes de marcado más populares y útiles en el mundo de la informática, pues permite tomar apuntes de forma estilizada muy rápidamente.
 
 Por otra parte, **LaTeX** es otro sistema de composición de textos, mucho más complejo y más lento de usar. Insertar cosas tan fundamentales como negritas, énfasis, listas, etc. puede resultar tedioso en algunas ocasiones.
@@ -16,6 +14,12 @@ Por otra parte, **LaTeX** es otro sistema de composición de textos, mucho más 
 **`md2tex`** es la solución para cuando queremos escribir rápidamente texto estilizado en LaTeX, pues convierte texto en Markdown a texto en LaTeX.
 
 ## Uso
+
+### Prerrequisitos
+
+Este programa requiere únicamente de un compilador de C. Para poder construir todas las dependencias automáticamente, puede usar la herramienta `make`.
+
+### Ejecución
 
 Haga uso del `makefile` proporcionado, haciendo:
 
@@ -62,20 +66,7 @@ $ ./md2tex example.md --preserve
   * **_Verbatim_** (`VERBATIM`). El código insertado entre `$$` será colocado tal cual en la traducción, eliminando los `$$` que lo rodean. Esto es útil, por ejemplo, si queremos insertar comandos de LaTeX directamente en Markdown.
 * **Customización de comandos LaTeX.** Debido a que, en la mayoría de las ocasiones, el usuario tiene una serie de comandos que usa por su cuenta, `md2tex` hace uso de un fichero de cabecera de C, llamado `latexcommands.h`, modificable por el usuario. El fichero está exhaustivamente especificado para poder sustituir los comandos predeterminados por los comandos que el usuario desee.
 
-## Ficheros
-
-| Nombre de fichero | Descripción |
-| --- | --- |
-| [`defines.h`](./defines.h) | `#define` necesarios para el _lexer_, hacen el código más claro y estético |
-| [`example.md`](./example.md) | Ejemplo que usa casi todas las etiquetas Markdown |
-| [`example_md2tex.tex`](./example_md2tex.tex) | Output de ejecutar `md2tex` sobre el ejemplo anterior |
-| [`latexcommands.h`](./latexcommands.h) | Permite la customización de los comandos LaTeX (ver [_Características del traductor_](#características-del-traductor)) |
-| [`lex.yy.c`](./lex.yy.c) | Es el fichero generado al hacer `lex md2tex.l`, lo inserto aquí en caso de que este comando no funcione correctamente |
-| [`makefile`](./makefile) | Facilita la compilación |
-| [`md2tex_main.c`](./md2tex_main.c) | Contiene el `main`, llama a `m2tex.l` (traducido a C) y genera archivos para cada fase de la traducción |
-| [`md2tex.l`](./md2tex.l) | El fichero de `lex`, es el que contiene el código relativo a la traducción de cada fase |
-
-## Sobre la traducción
+### Sobre la traducción
 
 Debido a las dependencias entre los distintos comandos de Markdown, y a la posibilidad de anidación entre ellos, estos se ejecutan en cuatro fases de traducción.
 
@@ -96,9 +87,9 @@ Cada flecha significa _fase siguiente_, comenzando por la primera fase.
 
 ![phasegraph](./resources/phasegraph.png)
 
-## Consideraciones importantes
+### Consideraciones importantes
 
-### GitHub-flavored Markdown
+#### GitHub-flavored Markdown
 
 Debido a que no hay un estándar para renderizar texto Markdown, para este traductor se ha tenido en cuenta la especificación [GitHub-flavored Markdown](https://github.github.com/gfm/). Ésta consiste en más de seiscientas reglas y ejemplos.
 
@@ -107,7 +98,7 @@ Este traductor es capaz de traducir la mayor parte de estas reglas, excepto algu
 * Son reglas "inútiles" (la mayoría de los _parsers_ no la tienen implementada).
 * No son reglas interpretables por expresiones regulares (y, por ello, por lenguajes regulares).
 
-### Limitaciones técnicas y posibles mejoras
+#### Limitaciones técnicas y posibles mejoras
 
 Debido a limitaciones de `lex` (y a que sería muy complicado implementarlo en este lenguaje), las siguientes características no funcionan de forma total en el traductor:
 
@@ -116,3 +107,16 @@ Debido a limitaciones de `lex` (y a que sería muy complicado implementarlo en e
 * Estilos en textos de enlaces e imágenes: podría implementarse con una fase extra en la traducción. Lo he considerado innecesario.
 
 Estas características podrían implementarse en futuras versiones de la aplicación.
+
+## Ficheros
+
+| Nombre de fichero | Descripción |
+| --- | --- |
+| [`defines.h`](./defines.h) | `#define` necesarios para el _lexer_, hacen el código más claro y estético |
+| [`example.md`](./example.md) | Ejemplo que usa casi todas las etiquetas Markdown |
+| [`example_md2tex.tex`](./example_md2tex.tex) | Output de ejecutar `md2tex` sobre el ejemplo anterior |
+| [`latexcommands.h`](./latexcommands.h) | Permite la customización de los comandos LaTeX (ver [_Características del traductor_](#características-del-traductor)) |
+| [`lex.yy.c`](./lex.yy.c) | Es el fichero generado al hacer `lex md2tex.l`, lo inserto aquí en caso de que este comando no funcione correctamente |
+| [`makefile`](./makefile) | Facilita la compilación |
+| [`md2tex_main.c`](./md2tex_main.c) | Contiene el `main`, llama a `m2tex.l` (traducido a C) y genera archivos para cada fase de la traducción |
+| [`md2tex.l`](./md2tex.l) | El fichero de `lex`, es el que contiene el código relativo a la traducción de cada fase |
