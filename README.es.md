@@ -4,7 +4,7 @@
 
 <h1 align="center"><p align="center">md2tex</h1></h1>
 <p align="center" id="badges">
-    <img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"> <img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size">
+    <img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"> <img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size"> <img src="https://img.shields.io/github/last-commit/mianfg/md2tex" alt="Last commit"> <img src="https://img.shields.io/github/release-date/mianfg/md2tex" alt="Release date"> <a href="mianfg.me"><imc src="https://img.shields.io/badge/-more%20info-orange" alt="More info"></a>
 </p>
 
 > Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
