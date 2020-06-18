@@ -3,6 +3,9 @@
 </p>
 
 <h1 align="center"><p align="center">md2tex</h1></h1>
+<p align="center" id="badges">
+    <img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License">
+</p>
 
 > Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
 > Doble Grado en Ingeniería Informática y Matemáticas, UGR. Curso 2019/2020
