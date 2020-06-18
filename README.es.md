@@ -4,7 +4,7 @@
 
 <h1 align="center"><p align="center">md2tex</h1></h1>
 <p align="center" id="badges">
-    <img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License">
+    <img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"> <img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size">
 </p>
 
 > Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
@@ -27,13 +27,13 @@ Este programa requiere únicamente de un compilador de C. Para poder construir t
 Haga uso del `makefile` proporcionado, haciendo:
 
 ~~~
-$ make
+$> make
 ~~~
 
 Obtendrá el archivo compilado `md2tex`, que puede ejecutar sobre el archivo Markdown de prueba `example.md`:
 
 ~~~
-$ ./md2tex example.md
+$> ./md2tex example.md
 ~~~
 
 Compruebe y compare los archivos `example.md` y el recién generado `example_md2tex.tex`.
@@ -41,7 +41,7 @@ Compruebe y compare los archivos `example.md` y el recién generado `example_md2
 Puede observar las fases de la traducción haciendo:
 
 ~~~
-$ ./md2tex example.md --preserve
+$> ./md2tex example.md --preserve
 ~~~
 
 ## Características del traductor
