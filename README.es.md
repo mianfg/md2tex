@@ -7,8 +7,7 @@
     <a href="https://github.com/mianfg/md2tex/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size"></a> <a href="https://github.com/mianfg/md2tex/commits"><img src="https://img.shields.io/github/last-commit/mianfg/md2tex" alt="Last commit"></a> <a href="mianfg.me"><img src="https://img.shields.io/badge/-more%20info-orange" alt="More info"></a>
 </p>
 
-> Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI)  
-> Doble Grado en Ingeniería Informática y Matemáticas, UGR. Curso 2019/2020
+> Creado por **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>) como práctica de uso de Lex para la asignatura **Modelos de Computación** (DECSAI). Doble Grado en Ingeniería Informática y Matemáticas, UGR. Curso 2019/2020
 
 **Markdown** es uno de los lenguajes de marcado más populares y útiles en el mundo de la informática, pues permite tomar apuntes de forma estilizada muy rápidamente.
 
