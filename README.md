@@ -4,7 +4,7 @@
 
 <h1 align="center"><p align="center">md2tex</h1></h1>
 <p align="center" id="badges">
-    <a href="https://github.com/mianfg/md2tex/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size"></a> <a href="https://github.com/mianfg/md2tex/commits"><img src="https://img.shields.io/github/last-commit/mianfg/md2tex" alt="Last commit"></a> <a href="mianfg.me"><img src="https://img.shields.io/badge/-more%20info-orange" alt="More info"></a>
+    <a href="https://github.com/mianfg/md2tex/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size"></a> <a href="https://github.com/mianfg/md2tex/commits"><img src="https://img.shields.io/github/last-commit/mianfg/md2tex" alt="Last commit"></a> <a href="https://md2tex.mianfg.me"><img src="https://img.shields.io/badge/-live%20app-orange" alt="Live app"></a>
 </p>
 
 > Created by **Miguel Ángel Fernández Gutiérrez** (<https://mianfg.me/>)
